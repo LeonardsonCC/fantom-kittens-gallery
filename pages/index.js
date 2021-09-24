@@ -2,9 +2,10 @@ import { useWeb3React } from "@web3-react/core";
 import React from "react";
 import { injected } from "../components/wallet/connector";
 import axios from "axios";
+import KittenGallery from "../components/KittenGallery";
 
 export default function Home() {
-  const [transactions, setTransactions] = React.useState([]);
+  const [nfts, setNfts] = React.useState([]);
 
   const { active, account, library, connector, activate, deactivate } =
     useWeb3React();
@@ -13,22 +14,49 @@ export default function Home() {
     try {
       await activate(injected);
 
-      const result = await axios.get("https://api.ftmscan.com/api", {
-        params: {
-          module: "account",
-          action: "tokennfttx",
-          address: account,
-          startblock: 0,
-          endblock: 999999999,
-          sort: "asc",
-          apikey: process.env.NEXT_PUBLIC_FTMSCAN_API_KEY,
-        },
-      });
-      if (result.data.status == 0) return;
-      setTransactions(result.data.result);
-      console.log(result);
+      if (account !== undefined) {
+        const result = await axios.get(
+          `https://api.paintswap.finance/userNFTs/${account}`,
+          {
+            params: {
+              allowNSFW: true,
+              numToFetch: 10,
+              numToSkip: 0,
+            },
+          }
+        );
+        console.log(result.data.nfts);
+        if (result.data.nfts.length > 0) {
+          const { nfts } = result.data;
+          const tmpNfts = nfts
+            .filter(
+              ({ nft }) =>
+                nft.address.toLowerCase() ==
+                "0xfd211f3b016a75bc8d73550ac5adc2f1cae780c0"
+            )
+            .sort(({ nft: nftA }, { nft: nftB }) => {
+              const nNftA = Number(nftA.tokenId);
+              const nNftB = Number(nftB.tokenId);
+              if (nNftA > nNftB) return +1;
+              else if (nNftA < nNftB) return -1;
+              return 0;
+            })
+            .map(({ nft }) => nft);
+
+          for (let nft of tmpNfts) {
+            const { data: fakeKitten } = await axios.get(
+              `https://kittens.fakeworms.studio/api/kitten/${nft.tokenId}`
+            );
+            nft.imageUrl = fakeKitten.image;
+            nft.name = fakeKitten.name;
+            nft.attributes = fakeKitten.attributes;
+          }
+          console.log(tmpNfts);
+          setNfts(tmpNfts);
+        }
+      }
     } catch (ex) {
-      console.log(ex);
+      console.error(ex);
     }
   }
 
@@ -61,17 +89,7 @@ export default function Home() {
       >
         Disconnect
       </button>
-      {transactions.length > 0 ? (
-        <ul>
-          {transactions.map((transaction) => (
-            <li key={transaction.blockNumber}>
-              <a target="_blank" rel="noreferrer" href={`https://paintswap.finance/nfts/assets/${transaction.contractAddress}/${transaction.tokenID}`}>
-                #{transaction.tokenID} - View on paintswap
-              </a>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      <KittenGallery nfts={nfts} />
     </div>
   );
 }
