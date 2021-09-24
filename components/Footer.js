@@ -11,7 +11,17 @@ export default function Footer() {
         >
           me
         </a>
-        . Check me out there :)
+        .
+      </p>
+      <p>
+        The whole source of this site is on{" "}
+        <a
+          href="https://github.com/LeonardsonCC/fantom-kittens-gallery"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="nes-icon github" />
+        </a>
       </p>
     </div>
   );
