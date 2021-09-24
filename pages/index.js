@@ -83,7 +83,30 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col items-center justify-center min-h-screen">
-        <div className="nes-container with-title w-full md:w-3/6 mt-10">
+        {nfts.length > 0 ? null : (
+          <div className="nes-container with-title max-w-full md:max-w-2xl mx-3">
+            <span className="title">About</span>
+            <p>
+              By now, this is just a gallery to see your{" "}
+              <a
+                href="https://kittens.fakeworms.studio/"
+                target="_blank"
+                rel="noreferrer"
+                className="nes-text is-primary"
+              >
+                Fantom Kittens
+              </a> made by <a
+                href="https://twitter.com/FakewormsStudio"
+                target="_blank"
+                rel="noreferrer"
+                className="nes-text is-primary"
+              >
+                FakeWorms Studio
+              </a>.
+            </p>
+          </div>
+        )}
+        <div className="nes-container with-title w-full md:w-3/6 mt-10 mx-3">
           <span className="title">Wallet</span>
           <ConnectWallet
             account={account}
