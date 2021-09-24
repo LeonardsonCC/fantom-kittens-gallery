@@ -1,4 +1,20 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Fantom Kittens Gallery
+This is just a simple gallery to see your Fantom Kittens NFTs authenticating using MetaMask.
+
+## What this exactly do
+- Authenticating using MetaMask just to get your public wallet address;
+- Fetch your NFTs using PaintSwap API (they don't have docs about that, but I got it using their website);
+- Check which NFTs is from FantomKittens contract (0xfd211f3b016a75bc8d73550ac5adc2f1cae780c0);
+- Fetch on [FantomKittens API](https://github.com/fakenickels/fantom-kittens/blob/main/pages/api/kitten/%5Bid%5D.ts) the images of each FantomKitten ID that you have;
+- Show them using [NES.css](https://nostalgic-css.github.io/NES.css/) because it's pretty and pixelated
+
+## About the MetaMask usage
+I know, this is strange, but I just did the MetaMask authentication to get your wallet because I wanted
+to learn how that works. So don't worry, I'm storing any usage data, or something like that, you can
+see the source code.
+
+## Feel free to use
+This was just a test to know better about how NFTs works. So feel free to use this source for any purposes;
 
 ## Getting Started
 
@@ -9,23 +25,6 @@ npm run dev
 # or
 yarn dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
