@@ -4,6 +4,7 @@ import { injected } from "../components/wallet/connector";
 import axios from "axios";
 import KittenGallery from "../components/KittenGallery";
 import ConnectWallet from "../components/ConnectWallet";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [nfts, setNfts] = React.useState([]);
@@ -80,26 +81,29 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div className="nes-container with-title w-full md:w-3/6 mt-10">
-        <span className="title">Wallet</span>
-        <ConnectWallet
-          account={account}
-          connect={connect}
-          disconnect={disconnect}
-        />
-      </div>
-      {nfts.length > 0 || fetchNftsProgress === 0 ? null : (
-        <div className="nes-container with-title w-full md:w-3/6 mt-3">
-          <span className="title">Loading...</span>
-          <progress
-            className="nes-progress is-success"
-            value={fetchNftsProgress}
-            max="100"
-          ></progress>
+    <>
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <div className="nes-container with-title w-full md:w-3/6 mt-10">
+          <span className="title">Wallet</span>
+          <ConnectWallet
+            account={account}
+            connect={connect}
+            disconnect={disconnect}
+          />
         </div>
-      )}
-      <KittenGallery nfts={nfts} />
-    </div>
+        {nfts.length > 0 || fetchNftsProgress === 0 ? null : (
+          <div className="nes-container with-title w-full md:w-3/6 mt-3">
+            <span className="title">Loading...</span>
+            <progress
+              className="nes-progress is-success"
+              value={fetchNftsProgress}
+              max="100"
+            ></progress>
+          </div>
+        )}
+        <KittenGallery nfts={nfts} />
+      </div>
+      <Footer />
+    </>
   );
 }
