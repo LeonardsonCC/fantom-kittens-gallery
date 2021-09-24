@@ -1,5 +1,4 @@
 export default function ConnectWallet({ account, connect, disconnect }) {
-  console.log("checking: ", account)
   return (
     <>
       {account === undefined ? (

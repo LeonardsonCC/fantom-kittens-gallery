@@ -12,11 +12,6 @@ export default function Home() {
   const { active, account, library, connector, activate, deactivate } =
     useWeb3React();
 
-  React.useEffect(() => {
-    if (account !== undefined) postWalletConnection();
-    else setNfts([]);
-  }, [account, postWalletConnection]);
-
   async function connect() {
     try {
       await activate(injected, undefined, true);
@@ -69,6 +64,11 @@ export default function Home() {
       setNfts(tmpNfts);
     }
   }, [account]);
+
+  React.useEffect(() => {
+    if (account !== undefined) postWalletConnection();
+    else setNfts([]);
+  }, [account, postWalletConnection]);
 
   async function disconnect() {
     try {
