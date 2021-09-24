@@ -1,6 +1,6 @@
 export default function KittenCard({ nft }) {
   return (
-    <section className={`nes-container with-title is-rounded flex flex-col items-center`}>
+    <section style={{borderImageRepeat: "stretch"}} className={`nes-container with-title is-rounded flex flex-col items-center`}>
       <p className="title">{nft.name}</p>
       <img
         alt={`FakeKitten #${nft.tokenId}`}
@@ -11,7 +11,7 @@ export default function KittenCard({ nft }) {
         {nft.name}
       </span>
       <div className="mt-5">
-        <div className="nes-container is-rounded ">
+        <div style={{borderImageRepeat: "stretch"}} className="nes-container is-rounded ">
           <p>Attributes</p>
           <ul className="nes-list is-disc">
             {nft.attributes.map((attr) => {
