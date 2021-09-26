@@ -106,7 +106,7 @@ export default function Home() {
             </p>
           </div>
         )}
-        <div className="nes-container with-title w-full md:w-3/6 mt-10 mx-3">
+        <div className="nes-container with-title md:w-3/6 mt-10 mx-3">
           <span className="title">Wallet</span>
           <ConnectWallet
             account={account}
