@@ -19,7 +19,7 @@ export default function KittenCard({ nft }) {
             {nft.attributes.map((attr) => {
               const traitIndex = kittensTraitsCount[attr.trait_type].findIndex(item => item.value === String(attr.value));
               return (
-                <li key={attr.trait_type} className="flex justify-between">
+                <li key={attr.trait_type} className="flex justify-between text-xs">
                   <span>
                     {attr.trait_type}: {attr.value}
                   </span>
