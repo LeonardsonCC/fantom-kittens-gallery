@@ -42,6 +42,14 @@ export default function KittenCard({ nft }) {
       >
         PaintSwap
       </a>
+      <a
+        href={`https://artion.io/explore/${nft.address}/${nft.tokenId}`}
+        target="_blank"
+        rel="noreferrer"
+        className="nes-btn is-primary mt-5"
+      >
+        Artion
+      </a>
     </section>
   );
 }
