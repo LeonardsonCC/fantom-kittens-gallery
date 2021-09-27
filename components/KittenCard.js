@@ -1,7 +1,7 @@
 import traits from "../utils/KittensTraitsCount.json";
 import { getRarityScore, getTraitPercentage } from "../utils/rarity";
 
-export default function KittenCard({ nft, showRarityRank=false }) {
+export default function KittenCard({ nft, showRarityRank = false }) {
   return (
     <section
       className={`nes-container with-title is-rounded flex flex-col items-center`}
@@ -12,7 +12,9 @@ export default function KittenCard({ nft, showRarityRank=false }) {
         src={nft.imageUrl}
         style={{ maxHeight: 150, maxWidth: 150 }}
       />
-      <span className={"mt-5"}>#{nft.rarityRank} rarity rank</span>
+      {showRarityRank ? (
+        <span className={"mt-5"}>#{nft.rarityRank} rarity rank</span>
+      ) : null}
 
       <span className={"mt-5 text-blue-500"}>
         Rarity Score {getRarityScore(nft.attributes)}
