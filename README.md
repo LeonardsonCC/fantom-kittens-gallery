@@ -10,7 +10,7 @@ This is just a simple gallery to see your Fantom Kittens NFTs authenticating usi
 
 ## About the MetaMask usage
 I know, this is strange, but I just did the MetaMask authentication to get your wallet because I wanted
-to learn how that works. So don't worry, I'm storing any usage data, or something like that, you can
+to learn how that works. So don't worry, I'm not storing any usage data, or something like that, you can
 see the source code.
 
 ## Feel free to use
