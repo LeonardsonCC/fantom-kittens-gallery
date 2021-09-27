@@ -5,6 +5,7 @@ import axios from "axios";
 import KittenGallery from "../components/KittenGallery";
 import ConnectWallet from "../components/ConnectWallet";
 import Footer from "../components/Footer";
+import Link from "next/link";
 
 export default function Home() {
   const [nfts, setNfts] = React.useState([]);
@@ -95,14 +96,17 @@ export default function Home() {
                 className="nes-text is-primary"
               >
                 Fantom Kittens
-              </a> made by <a
+              </a>{" "}
+              made by{" "}
+              <a
                 href="https://twitter.com/FakewormsStudio"
                 target="_blank"
                 rel="noreferrer"
                 className="nes-text is-primary"
               >
                 FakeWorms Studio
-              </a>.
+              </a>
+              .
             </p>
           </div>
         )}
@@ -113,6 +117,12 @@ export default function Home() {
             connect={connect}
             disconnect={disconnect}
           />
+        </div>
+        <div className="nes-container with-title md:w-3/6 mt-10 mx-3">
+          <span className="title">Rarity Rank</span>
+          <Link href="/rarity-rank">
+            <a className="nes-btn is-primary">See rarity rank</a>
+          </Link>
         </div>
         {nfts.length > 0 || fetchNftsProgress === 0 ? null : (
           <div className="nes-container with-title md:w-3/6 mt-3">

@@ -1,36 +1,7 @@
 import traits from "../utils/KittensTraitsCount.json";
-
-const MINTED_KITTENS = 419;
+import { getRarityScore, getTraitPercentage } from "../utils/rarity";
 
 export default function KittenCard({ nft }) {
-  const getTraitPercentage = (count) => {
-    return ((count / MINTED_KITTENS) * 100).toFixed(2);
-  };
-
-  /**
-   *
-   * Rarity score math = 1 / (items with given attribute / total supply)
-   *
-   * @param {number} count number of kittens with a given attribute
-   * @returns rarity score
-   *
-   */
-  const getTraitScore = (count) => {
-    return 1 / (count / MINTED_KITTENS);
-  };
-
-  const getRarityScore = () => {
-    const score = nft.attributes.reduce((acc, attr) => {
-      const index = traits[attr.trait_type].findIndex((item) => {
-        return item.value === String(attr.value);
-      });
-
-      return (acc += getTraitScore(traits[attr.trait_type][index]?.count));
-    }, 0);
-
-    return score.toFixed(2);
-  };
-
   return (
     <section
       className={`nes-container with-title is-rounded flex flex-col items-center`}
@@ -44,7 +15,7 @@ export default function KittenCard({ nft }) {
       <span className={"mt-5"}>{nft.name}</span>
 
       <span className={"mt-5 text-blue-500"}>
-        Rarity Score {getRarityScore()}
+        Rarity Score {getRarityScore(nft.attributes)}
       </span>
       <div className="mt-5 ">
         <div className="nes-container is-rounded ">
