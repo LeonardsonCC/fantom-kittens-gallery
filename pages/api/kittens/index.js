@@ -26,8 +26,8 @@ export default function handler(req, res) {
     });
   } else if (orderDir === "DESC") {
     kittens.sort((itemA, itemB) => {
-      if (itemA[orderBy] < itemB[orderBy]) return 1;
-      if (itemA[orderBy] > itemB[orderBy]) return -1;
+      if (Number(itemA[orderBy]) < Number(itemB[orderBy])) return 1;
+      if (Number(itemA[orderBy]) > Number(itemB[orderBy])) return -1;
       return 0;
     });
   }
