@@ -31,7 +31,7 @@ export default function handler(req, res) {
       return 0;
     });
   }
-  kittens = kittens.slice((page-1) * 50, ((page-1) * 50) + 50)
+  kittens = kittens.slice((page-1) * kittensPerPage, ((page-1) * kittensPerPage) + kittensPerPage)
   if (search !== "") {
     kittens = kittens.filter(kitten => String(kitten.tokenId).includes(search))
   }
