@@ -29,7 +29,7 @@ export default function RarityRank() {
           <a className="nes-btn is-primary">See my Kittens</a>
         </Link>
       </div>
-      <KittenGallery nfts={nfts} />
+      <KittenGallery nfts={nfts} showRarityRank />
     </div>
   );
 }

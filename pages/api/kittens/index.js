@@ -16,6 +16,16 @@ export default function handler(req, res) {
       rarity: getRarityScore(extractAttrsFromName(kittensDict[kittenId])),
     };
   });
+  kittens = kittens.sort((itemA, itemB) => {
+      if (Number(itemA.rarity) < Number(itemB.rarity)) return 1;
+      if (Number(itemA.rarity) > Number(itemB.rarity)) return -1;
+      return 0;
+    }).map((kitten, index) => {
+    return {
+      ...kitten,
+      rarityRank: index+1
+    }
+  })
   
   if (!["rarity", "tokenId"].includes(orderBy)) orderBy = "tokenId"
   if (orderDir === "ASC") {
