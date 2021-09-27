@@ -2,6 +2,12 @@ import traits from "../utils/KittensTraitsCount.json";
 
 const MINTED_KITTENS = 419;
 
+/**
+ * If someone got a kitten with a unique combination (1/419 in all stats)
+ * it would be 419.0000000000062 * 4 (we got 4 stats)
+ */
+const MAX_RARITY = 1676;
+
 export default function KittenCard({ nft }) {
   const getTraitPercentage = (count) => {
     return ((count / MINTED_KITTENS) * 100).toFixed(2);
@@ -43,8 +49,9 @@ export default function KittenCard({ nft }) {
       />
       <span className={"mt-5"}>{nft.name}</span>
 
-      <span className={"mt-5 text-blue-500"}>
-        Rarity Score {getRarityScore()}
+      <span className="mt-5 text-xs text-blue-400">Rarity Score</span>
+      <span className={"text-blue-500"}>
+        {getRarityScore()}/{MAX_RARITY}
       </span>
       <div className="mt-5 ">
         <div className="nes-container is-rounded ">
