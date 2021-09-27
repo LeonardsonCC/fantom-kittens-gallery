@@ -7,7 +7,7 @@ export default function KittenGallery({ nfts, showRarityRank=false }) {
         <div key={nft.tokenId} className="ml-3 mr-3">
           <KittenCard
             nft={nft}
-            showRarityRank
+            showRarityRank={showRarityRank}
           />
         </div>
       ))}
