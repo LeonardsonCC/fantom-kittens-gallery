@@ -1,6 +1,6 @@
 import traits from "../utils/KittensTraitsCount.json";
 
-const MINTED_KITTENS = 419;
+export const MINTED_KITTENS = 419;
 
 export const getTraitPercentage = (count) => {
   return ((count / MINTED_KITTENS) * 100).toFixed(2);
