@@ -1972,5 +1972,55 @@
       "value": "rgb(185, 249, 14)",
       "count": 1
     }
+  ],
+  "Color": [
+    {
+      "value": "Cyan",
+      "count": 27
+    },
+    {
+      "value": "Spring Green",
+      "count": 46
+    },
+    {
+      "value": "Rose",
+      "count": 35
+    },
+    {
+      "value": "Azure",
+      "count": 38
+    },
+    {
+      "value": "Magenta",
+      "count": 42
+    },
+    {
+      "value": "Red",
+      "count": 30
+    },
+    {
+      "value": "Yellow",
+      "count": 32
+    },
+    {
+      "value": "Blue",
+      "count": 36
+    },
+    {
+      "value": "Orange",
+      "count": 29
+    },
+    {
+      "value": "Chartreuse Green",
+      "count": 40
+    },
+    {
+      "value": "Violet",
+      "count": 34
+    },
+    {
+      "value": "Green",
+      "count": 31
+    }
   ]
 }
