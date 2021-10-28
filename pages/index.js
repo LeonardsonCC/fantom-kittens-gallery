@@ -6,21 +6,21 @@ import KittenGallery from "../components/KittenGallery";
 import ConnectWallet from "../components/ConnectWallet";
 import Footer from "../components/Footer";
 import Link from "next/link";
-import { extractColorFrom } from '../utils/fantomKittensDict'
+import { extractColorFrom } from "../utils/fantomKittensDict";
 
-function computeColorTraitFromRgbTrait(rgbTrait){
+function computeColorTraitFromRgbTrait(rgbTrait) {
   const rgbString = rgbTrait.value;
 
   const match = rgbString.match(/rgb?\((\d{1,3}), ?(\d{1,3}), ?(\d{1,3})\)/);
 
-  if(match) {
+  if (match) {
     const r = parseInt(match[1]);
     const g = parseInt(match[2]);
     const b = parseInt(match[3]);
 
     return {
       trait_type: "Color",
-      value: extractColorFrom(r, g, b)
+      value: extractColorFrom(r, g, b),
     };
   }
 }
@@ -80,13 +80,17 @@ export default function Home() {
         nft.name = fakeKitten.name;
         nft.attributes = fakeKitten.attributes;
 
-        const rgbAttributeIndex = nft.attributes.findIndex(attr => attr.trait_type === "RGB");
-        
+        const rgbAttributeIndex = nft.attributes.findIndex(
+          (attr) => attr.trait_type === "RGB"
+        );
+
         // Not sure I need to be this defensive since every kitten should have an RGB attribute :p
-        if(rgbAttributeIndex !== -1) {
-          const colorTrait = computeColorTraitFromRgbTrait(nft.attributes[rgbAttributeIndex]);
-          
-          if(colorTrait) {
+        if (rgbAttributeIndex !== -1) {
+          const colorTrait = computeColorTraitFromRgbTrait(
+            nft.attributes[rgbAttributeIndex]
+          );
+
+          if (colorTrait) {
             // Insert color attribute before the rgb color
             nft.attributes.splice(rgbAttributeIndex, 0, colorTrait);
           }
