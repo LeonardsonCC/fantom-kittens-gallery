@@ -21,6 +21,10 @@ This was just a test to know better about how NFTs works. So feel free to use th
 First, run the development server:
 
 ```bash
+# install dependencies
+npm i
+
+# run dev environment
 npm run dev
 # or
 yarn dev
