@@ -1,3 +1,5 @@
+import convert from 'color-convert'
+
 export const kittensDict = {
   0: "Fantom Kitten 1-0-20-0-none-101-236-212.png",
   1: "Fantom Kitten 2-1-33-4-none-35-231-114.png",
@@ -431,11 +433,43 @@ export const extractAttrsFromName = (name) => {
     .split("-")
     .map((s) => s.trim());
 
+  const color = extractColorFrom(r, g, b);
+
   return [
     { trait_type: "Ear Frame", value: earFrame },
     { trait_type: "Eye Frame", value: eyeFrame },
     { trait_type: "Mouth Frame", value: mouthFrame },
     { trait_type: "Glass Frame", value: glassFrame },
+    { trait_type: "Color", value: color },
     { trait_type: "RGB", value: `rgb(${r}, ${g}, ${b})` },
   ];
 };
+
+const colorRanges = {
+  "Red": [[345, 360], [0, 15]],
+  "Orange": [[15, 45]],
+  "Yellow": [[45, 75]],
+  "Chartreuse Green": [[75, 105]],
+  "Green": [[105, 135]],
+  "Spring Green": [[135, 165]],
+  "Cyan": [[165, 195]],
+  "Azure": [[195, 225]],
+  "Blue": [[225, 255]],
+  "Violet": [[255, 285]],
+  "Magenta": [[285, 315]],
+  "Rose": [[315, 345]]
+}
+
+export function extractColorFrom(r, g, b) {
+  const [h] = convert.rgb.hsl(parseInt(r), parseInt(g), parseInt(b));
+
+  const hue = h % 360;
+
+  const isHueInsideRange = ([start, end]) => hue >= start && hue < end
+
+  const [color] = Object
+    .entries(colorRanges)
+    .find(([_, ranges]) => ranges.some(isHueInsideRange));
+
+  return color;
+}
