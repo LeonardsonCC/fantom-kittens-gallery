@@ -2,13 +2,12 @@ import traits from "../utils/KittensTraitsCount.json";
 import { getRarityScore, getTraitPercentage } from "../utils/rarity";
 
 export default function KittenCard({ nft, showRarityRank = false }) {
+  const kittenColor = nft.attributes.find((attr) => attr.trait_type === "RGB").value;
+
   return (
     <section
-      className={`nes-container with-title is-rounded flex flex-col items-center`}
-      style={{
-        "background-color": "#121212",
-        color: nft.attributes.find((attr) => attr.trait_type === "RGB").value,
-      }}
+      className={`nes-container is-dark with-title is-rounded flex flex-col items-center`}
+      style={{ color: kittenColor }}
     >
       <p>{nft.name}</p>
       <br />
@@ -25,7 +24,7 @@ export default function KittenCard({ nft, showRarityRank = false }) {
         Rarity Score {getRarityScore(nft.attributes)}
       </span>
       <div className="mt-5 ">
-        <div className="nes-container is-rounded ">
+        <div className="nes-container is-rounded" style={{ color: kittenColor }}>
           <ul className="nes-list is-disc">
             {nft.attributes.map((attr) => {
               const traitIndex = traits[attr.trait_type].findIndex(

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="w-full text-center">
+    <div className="w-full text-center is-dark text-white">
       <p>
         Hello, this was created by{" "}
         <a

@@ -119,7 +119,7 @@ export default function Home() {
     <>
       <div className="flex flex-col items-center justify-center min-h-screen">
         {nfts.length > 0 ? null : (
-          <div className="nes-container with-title max-w-full md:max-w-2xl mx-3">
+          <div className="nes-container is-dark with-title max-w-full md:max-w-2xl mx-3">
             <span className="title">About</span>
             <p>
               By now, this is just a gallery to see your{" "}
@@ -144,7 +144,7 @@ export default function Home() {
             </p>
           </div>
         )}
-        <div className="nes-container with-title md:w-3/6 mt-10 mx-3">
+        <div className="nes-container is-dark with-title md:w-3/6 mt-10 mx-3">
           <span className="title">Wallet</span>
           <ConnectWallet
             account={account}
@@ -152,14 +152,14 @@ export default function Home() {
             disconnect={disconnect}
           />
         </div>
-        <div className="nes-container with-title md:w-3/6 mt-10 mx-3">
+        <div className="nes-container is-dark with-title md:w-3/6 mt-10 mx-3">
           <span className="title">Rarity Rank</span>
           <Link href="/rarity-rank">
             <a className="nes-btn is-primary">See rarity rank</a>
           </Link>
         </div>
         {nfts.length > 0 || fetchNftsProgress === 0 ? null : (
-          <div className="nes-container with-title md:w-3/6 mt-3">
+          <div className="nes-container is-dark with-title md:w-3/6 mt-3">
             <span className="title">Loading...</span>
             <progress
               className="nes-progress is-success"

@@ -23,7 +23,7 @@ export default function RarityRank() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
-      <div className="nes-container with-title md:w-3/6 mt-10 mx-3">
+      <div className="nes-container is-dark with-title md:w-3/6 mt-10 mx-3">
         <span className="title">My Kittens</span>
         <Link href="/">
           <a className="nes-btn is-primary">See my Kittens</a>
