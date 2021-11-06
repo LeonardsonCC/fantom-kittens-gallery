@@ -7,6 +7,7 @@ body {
   margin: 0;
   font-family: "Press Start 2P", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
+  background-color: #212529;
 }
 
 a {
