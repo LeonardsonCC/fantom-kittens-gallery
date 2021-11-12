@@ -7,6 +7,7 @@ import ConnectWallet from "../components/ConnectWallet";
 import Footer from "../components/Footer";
 import Link from "next/link";
 import { extractColorFrom } from "../utils/fantomKittensDict";
+import KittenPanel from "../components/KittenPanel";
 
 function computeColorTraitFromRgbTrait(rgbTrait) {
   const rgbString = rgbTrait.value;
@@ -157,6 +158,12 @@ export default function Home() {
           <Link href="/rarity-rank">
             <a className="nes-btn is-primary">See rarity rank</a>
           </Link>
+        </div>
+        <div className="nes-container is-dark with-title md:w-3/6 mt-10 mx-3">
+          <span className="title">Kittens Panel</span>
+          <div className="flex justify-center">
+            <KittenPanel/>
+          </div>
         </div>
         {nfts.length > 0 || fetchNftsProgress === 0 ? null : (
           <div className="nes-container is-dark with-title md:w-3/6 mt-3">
