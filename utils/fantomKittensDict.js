@@ -420,7 +420,7 @@ export const kittensDict = {
   416: "Fantom Kitten 417-1-9-11-none-36-252-68.png",
   417: "Fantom Kitten 418-0-12-9-none-184-232-193.png",
   418: "Fantom Kitten 419-1-24-7-none-52-20-221.png",
-  419: "Fantom Kitten 420-0-19-3-none-185-249-14.png",
+  //419: "Fantom Kitten 420-0-19-3-none-185-249-14.png",
 };
 
 export const getFileNameByIndex = (index) => kittensDict[index];
