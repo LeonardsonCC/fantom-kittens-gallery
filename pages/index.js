@@ -7,6 +7,7 @@ import ConnectWallet from "../components/ConnectWallet";
 import Footer from "../components/Footer";
 import Link from "next/link";
 import { extractColorFrom } from "../utils/fantomKittensDict";
+import { requestSwitchToFantomChain } from "../utils/web3"
 import KittenPanel from "../components/KittenPanel";
 
 function computeColorTraitFromRgbTrait(rgbTrait) {
@@ -38,6 +39,11 @@ export default function Home() {
       await activate(injected, undefined, true);
       postWalletConnection();
     } catch (ex) {
+      if (ex.name === 'UnsupportedChainIdError') {
+        await requestSwitchToFantomChain();
+        await activate(injected, undefined, true);
+        postWalletConnection();
+      }
       console.error(ex);
     }
   }
