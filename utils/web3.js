@@ -1,3 +1,5 @@
+const toHex = (num) => '0x' + num.toString(16)
+
 export function getTransactionsByAccount(eth, myaccount, startBlockNumber, endBlockNumber) {
   if (endBlockNumber == null) {
     endBlockNumber = eth.blockNumber;
@@ -32,5 +34,43 @@ export function getTransactionsByAccount(eth, myaccount, startBlockNumber, endBl
         }
       })
     }
+  }
+}
+
+async function addFantomChainToWallet() {
+  return window.ethereum.request({
+    method: "wallet_addEthereumChain",
+    params: [
+      {
+        chainId: toHex(250),
+        chainName: "Fantom Opera",
+        nativeCurrency: {
+          name: "Fantom",
+          symbol: "FTM",
+          decimals: 18
+        },
+        blockExplorerUrls: ["https://ftmscan.com/"],
+        rpcUrls: ["https://rpc.ftm.tools/"],
+      }, address
+    ],
+  });
+}
+
+async function switchToFantomChain() {
+  return window.ethereum.request({
+    method: "wallet_switchEthereumChain",
+    params: [{ chainId: toHex(250) }]
+  });
+}
+
+export async function requestSwitchToFantomChain() {
+  try {
+    await switchToFantomChain();
+  } catch (error) {
+    if (error.code === 4902) {
+      await addFantomChainToWallet();
+      return;
+    }
+    console.log(error)
   }
 }
